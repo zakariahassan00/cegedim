@@ -15,10 +15,13 @@ const TimeSlotPage = () => {
 
   return (
     <div>
-      <h1>My timeslot page</h1>
+      <h1>My timeslot pages</h1>
       <TimeSlots items={timeslots} />
     </div>
   );
 };
+
+TimeSlotPage.pageTitle = "Time slots";
+TimeSlotPage.pageSubtitle = "A simple example";
 
 export default TimeSlotPage;
