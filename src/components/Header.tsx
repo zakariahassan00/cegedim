@@ -34,14 +34,8 @@ export const Header = (props: Props) => {
             M
           </IconButton>
         </Link>
-        <Typography variant="h6" className={classes.title}>
-          {title}
-        </Typography>
-        {subtitle && (
-          <Typography variant="h6" className={classes.subtitle}>
-            {subtitle}
-          </Typography>
-        )}
+        <span className={classes.title}>{title}</span>
+        {subtitle && <span className={classes.subtitle}>{subtitle}</span>}
       </Toolbar>
     </AppBar>
   );
