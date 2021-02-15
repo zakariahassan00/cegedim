@@ -1,10 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-const validate = (appointment) => {
-    throw new Error();
-}
-
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     const prisma = new PrismaClient()
@@ -15,8 +11,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             res.status(200).json(appointments)
             break
         case 'POST':
-            validate(req.body)
-            res.status(200).json({ name: req.body })
-            break
+            const { practitionerId, patientId, startDate, endDate } = req.body;
+            return await prisma.appointment.create({
+                data: {
+                    practitionerId : practitionerId,
+                    patientId : patientId,
+                    startDate : startDate,
+                    endDate : endDate
+                }
+            })
     }
   }
