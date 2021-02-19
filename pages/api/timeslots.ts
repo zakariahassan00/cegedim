@@ -3,11 +3,8 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 
-    console.log(req.query)
     const prisma = new PrismaClient()
-    const availabilities = await prisma.availability.findMany({
-        where: {practitionerId: +req.query.practitionerId},
-    })
+    const timeslots = await prisma.timeslot.findMany()
 
-    res.status(200).json(availabilities)
-  }
+    res.status(200).json(timeslots)
+}
