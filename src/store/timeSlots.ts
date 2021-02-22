@@ -3,9 +3,14 @@ import {
   createEntityAdapter,
   createSlice,
 } from "@reduxjs/toolkit";
+import config from "../../config";
+
+const SERVER_API_ENDPOINT = config.get("SERVER_API_ENDPOING", "/api");
 
 export const getTimeSlots = createAsyncThunk("getTimeSlots", async () => {
-  const response = await fetch("/api/timeslots").then((res) => res.json());
+  const response = await fetch(`${SERVER_API_ENDPOINT}/timeslots`).then((res) =>
+    res.json()
+  );
   return response.data;
 });
 
