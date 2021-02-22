@@ -1,21 +1,25 @@
-import { PrismaClient } from '@prisma/client';
 import type { NextApiRequest, NextApiResponse } from 'next';
-
-const validate = (appointment) => {
-  throw new Error(appointment);
-};
+import prisma from 'prisma';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const prisma = new PrismaClient();
-
   switch (req.method) {
     case 'GET':
       const appointments = await prisma.appointment.findMany();
       res.status(200).json(appointments);
       break;
     case 'POST':
-      validate(req.body);
-      res.status(200).json({ name: req.body });
+      const { patientId, practitionerId, startDate, endDate } = JSON.parse(
+        req.body,
+      );
+      const appointment = await prisma.appointment.create({
+        data: {
+          patientId: parseInt(patientId),
+          practitionerId: parseInt(practitionerId),
+          startDate: startDate,
+          endDate: endDate,
+        },
+      });
+      res.status(200).json(appointment);
       break;
   }
 };

@@ -1,9 +1,8 @@
-import { combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers } from 'redux';
+import timeslotsSlice from './timeslots';
 
-import timeSlotsSlice from './timeSlots';
-
-const rootReducer = combineReducers({ timeSlots: timeSlotsSlice.reducer });
+const rootReducer = combineReducers({ timeslots: timeslotsSlice.reducer });
 
 const store = configureStore({
   reducer: rootReducer,

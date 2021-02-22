@@ -1,10 +1,8 @@
-import { PrismaClient } from '@prisma/client';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import prisma from 'prisma';
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
-  console.log(req.query);
-  const prisma = new PrismaClient();
-  const availabilities = prisma.availability.findMany({
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+  const availabilities = await prisma.availability.findMany({
     where: { practitionerId: +req.query.practitionerId },
   });
 

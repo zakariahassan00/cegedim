@@ -1,63 +1,45 @@
+import { Timeslot } from '@prisma/client';
 import {
   createAsyncThunk,
   createEntityAdapter,
   createSlice,
 } from '@reduxjs/toolkit';
 import config from '../../config';
+import { parseIds } from 'store/utils';
 
 const SERVER_API_ENDPOINT = config.get('SERVER_API_ENDPOING', '/api');
 
 export const getTimeSlots = createAsyncThunk('getTimeSlots', async () => {
-  const response = await fetch(`${SERVER_API_ENDPOINT}/timeslots`).then((res) =>
-    res.json(),
-  );
-  return response.data;
+  const response = await fetch(`${SERVER_API_ENDPOINT}/timeslots`);
+  const parsedResponse = await response.json();
+  return parseIds(parsedResponse) as Timeslot[];
 });
 
-const timeSlotsAdapter = createEntityAdapter<any>({
-  sortComparer: (a, b) => a.title.localeCompare(b.title),
-});
+const timeslotsAdapter = createEntityAdapter<any>({});
 
-export const timeSlotsSelectors = timeSlotsAdapter.getSelectors();
+export const timeslotsSelectors = timeslotsAdapter.getSelectors();
 
-const timeSlotsSlice = createSlice({
-  name: 'timeSlots',
-  initialState: timeSlotsAdapter.getInitialState({
-    loading: 'idle',
+const timeslotsSlice = createSlice({
+  name: 'timeslots',
+  initialState: timeslotsAdapter.getInitialState({
+    loading: false,
     error: null,
-    ids: ['a', 'b', 'c', 'd'],
-    entities: {
-      a: {
-        id: 'a',
-        startDate: new Date(2021, 2, 6, 15, 55, 0).toISOString(),
-        endDate: new Date(2021, 2, 6, 16, 10, 0).toISOString(),
-      },
-      b: {
-        id: 'b',
-        startDate: new Date(2021, 2, 6, 16, 55, 0).toISOString(),
-        endDate: new Date(2021, 2, 6, 16, 55, 0).toISOString(),
-      },
-      c: {
-        id: 'c',
-        startDate: new Date(2021, 2, 6, 17, 55, 0).toISOString(),
-        endDate: new Date(2021, 2, 6, 17, 55, 0).toISOString(),
-      },
-      d: {
-        id: 'd',
-        startDate: new Date(2021, 2, 6, 15, 25, 0).toISOString(),
-        endDate: new Date(2021, 2, 6, 15, 40, 0).toISOString(),
-      },
-    },
   }),
   reducers: {},
   extraReducers: (builder) => {
+    builder.addCase(getTimeSlots.pending, (state) => {
+      state.loading = true;
+    });
     builder.addCase(getTimeSlots.fulfilled, (state, action) => {
-      timeSlotsAdapter.setAll(state, action.payload);
+      timeslotsAdapter.setAll(state, action.payload);
+      state.error = null;
+      state.loading = false;
     });
     builder.addCase(getTimeSlots.rejected, (state, action) => {
       state.error = action.error;
+      state.loading = false;
     });
   },
 });
 
-export default timeSlotsSlice;
+export default timeslotsSlice;
