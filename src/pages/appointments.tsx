@@ -1,5 +1,5 @@
-import AppointmentForm from "../components/AppointmentForm";
-import AppointmentList from "../components/AppointmentList";
+import AppointmentForm from '../components/AppointmentForm';
+import AppointmentList from '../components/AppointmentList';
 
 const AppointmentsPage = () => {
   return (
@@ -11,7 +11,7 @@ const AppointmentsPage = () => {
   );
 };
 
-AppointmentsPage.pageTitle = "Appointments";
+AppointmentsPage.pageTitle = 'Appointments';
 AppointmentsPage.pageSubtitle = "Let's get to work 👩‍💻";
 
 export default AppointmentsPage;

@@ -1,12 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
-import { getTimeSlots, timeSlotsSelectors } from "../store/timeSlots";
-import { useEffect } from "react";
-import TimeSlots from "../components/TimeSlots";
+import { useDispatch, useSelector } from 'react-redux';
+import { getTimeSlots, timeSlotsSelectors } from '../store/timeSlots';
+import { useEffect } from 'react';
+import TimeSlots from '../components/TimeSlots';
 
 const TimeSlotPage = () => {
   const dispatch = useDispatch();
   const timeslots = useSelector((state) =>
-    timeSlotsSelectors.selectAll(state.timeSlots)
+    timeSlotsSelectors.selectAll(state.timeSlots),
   );
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const TimeSlotPage = () => {
   );
 };
 
-TimeSlotPage.pageTitle = "Time slots";
-TimeSlotPage.pageSubtitle = "A simple example";
+TimeSlotPage.pageTitle = 'Time slots';
+TimeSlotPage.pageSubtitle = 'A simple example';
 
 export default TimeSlotPage;

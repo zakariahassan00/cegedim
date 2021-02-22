@@ -1,13 +1,13 @@
-import { createMuiTheme, ThemeProvider } from "@material-ui/core";
-import { Provider } from "react-redux";
-import store from "../store";
-import { Layout } from "../components/Layout";
-import "../../styles.scss";
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+import { Provider } from 'react-redux';
+import store from '../store';
+import { Layout } from '../components/Layout';
+import '../../styles.scss';
 
 const theme = createMuiTheme({
   palette: {
-    primary: { main: "#000" },
-    secondary: { main: "#FFF" },
+    primary: { main: '#000' },
+    secondary: { main: '#FFF' },
   },
 });
 

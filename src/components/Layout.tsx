@@ -1,14 +1,14 @@
-import { makeStyles } from "@material-ui/core";
-import { Header } from "./Header";
+import { makeStyles } from '@material-ui/core';
+import { Header } from './Header';
 
 const useStyles = makeStyles({
   layout: {
-    display: "flex",
-    flexDirection: "column",
-    height: "100%",
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
   },
   content: {
-    height: "100%",
+    height: '100%',
   },
 });
 

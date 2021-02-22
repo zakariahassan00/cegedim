@@ -1,7 +1,7 @@
-import { format } from "date-fns";
+import { format } from 'date-fns';
 
-const DATE_FORMAT = "MM/dd/yyyy";
-const TIME_FORMAT = "HH:mm";
+const DATE_FORMAT = 'MM/dd/yyyy';
+const TIME_FORMAT = 'HH:mm';
 
 export type Range = { from: Date; to: Date };
 

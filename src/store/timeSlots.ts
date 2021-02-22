@@ -2,14 +2,14 @@ import {
   createAsyncThunk,
   createEntityAdapter,
   createSlice,
-} from "@reduxjs/toolkit";
-import config from "../../config";
+} from '@reduxjs/toolkit';
+import config from '../../config';
 
-const SERVER_API_ENDPOINT = config.get("SERVER_API_ENDPOING", "/api");
+const SERVER_API_ENDPOINT = config.get('SERVER_API_ENDPOING', '/api');
 
-export const getTimeSlots = createAsyncThunk("getTimeSlots", async () => {
+export const getTimeSlots = createAsyncThunk('getTimeSlots', async () => {
   const response = await fetch(`${SERVER_API_ENDPOINT}/timeslots`).then((res) =>
-    res.json()
+    res.json(),
   );
   return response.data;
 });
@@ -21,29 +21,29 @@ const timeSlotsAdapter = createEntityAdapter<any>({
 export const timeSlotsSelectors = timeSlotsAdapter.getSelectors();
 
 const timeSlotsSlice = createSlice({
-  name: "timeSlots",
+  name: 'timeSlots',
   initialState: timeSlotsAdapter.getInitialState({
-    loading: "idle",
+    loading: 'idle',
     error: null,
-    ids: ["a", "b", "c", "d"],
+    ids: ['a', 'b', 'c', 'd'],
     entities: {
       a: {
-        id: "a",
+        id: 'a',
         startDate: new Date(2021, 2, 6, 15, 55, 0).toISOString(),
         endDate: new Date(2021, 2, 6, 16, 10, 0).toISOString(),
       },
       b: {
-        id: "b",
+        id: 'b',
         startDate: new Date(2021, 2, 6, 16, 55, 0).toISOString(),
         endDate: new Date(2021, 2, 6, 16, 55, 0).toISOString(),
       },
       c: {
-        id: "c",
+        id: 'c',
         startDate: new Date(2021, 2, 6, 17, 55, 0).toISOString(),
         endDate: new Date(2021, 2, 6, 17, 55, 0).toISOString(),
       },
       d: {
-        id: "d",
+        id: 'd',
         startDate: new Date(2021, 2, 6, 15, 25, 0).toISOString(),
         endDate: new Date(2021, 2, 6, 15, 40, 0).toISOString(),
       },

@@ -1,18 +1,18 @@
-import { Link, makeStyles } from "@material-ui/core";
-import NextLink from "next/link";
+import { Link, makeStyles } from '@material-ui/core';
+import NextLink from 'next/link';
 
 const useStyles = makeStyles({
   home: {
-    display: "flex",
-    flexDirection: "column",
-    height: "100%",
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
 
-    "& > section": {
+    '& > section': {
       flex: 1,
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
   },
 });
@@ -40,6 +40,6 @@ const Home = () => {
   );
 };
 
-Home.pageTitle = "Test technique Maiia";
+Home.pageTitle = 'Test technique Maiia';
 
 export default Home;

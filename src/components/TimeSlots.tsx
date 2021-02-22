@@ -1,8 +1,8 @@
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import { Card, ListItemIcon, Typography } from "@material-ui/core";
-import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
-import { formatDateRange } from "../utils/date";
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import { Card, ListItemIcon, Typography } from '@material-ui/core';
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import { formatDateRange } from '../utils/date';
 
 const getTimeSlotDatacy = (id: string) => `timeslot-${id}`;
 
