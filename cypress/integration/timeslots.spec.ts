@@ -1,6 +1,13 @@
-describe("Can see the time slot list", () => {
-  it("can visit the time slot page", () => {
-    cy.visit("/timeslots");
-    cy.pick("timeslot-list").should("be.visible");
+describe('Timeslots page', () => {
+  before(() => {
+    cy.visit('/timeslots');
+  });
+
+  it('can see the intro section', () => {
+    cy.pick('intro').should('be.visible');
+  });
+
+  it('can see the time slot list', () => {
+    cy.pick('timeslot-list').should('be.visible');
   });
 });

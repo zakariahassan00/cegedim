@@ -1,6 +1,17 @@
-describe("Can see the technical test intro", () => {
-  it("can visit the home page", () => {
-    cy.visit("/");
-    cy.pick("intro").should("be.visible");
+describe('Technical test home page', () => {
+  before(() => {
+    cy.visit('/');
+  });
+
+  it('can see the intro section', () => {
+    cy.pick('intro').should('be.visible');
+  });
+
+  it('can see the timeslots section', () => {
+    cy.pick('timeslots').should('be.visible');
+  });
+
+  it('can see the appointments section', () => {
+    cy.pick('appointments').should('be.visible');
   });
 });

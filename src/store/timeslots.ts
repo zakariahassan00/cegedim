@@ -4,7 +4,7 @@ import {
   createEntityAdapter,
   createSlice,
 } from '@reduxjs/toolkit';
-import config from '../../config';
+import config from 'config';
 import { parseIds } from 'store/utils';
 
 const SERVER_API_ENDPOINT = config.get('SERVER_API_ENDPOING', '/api');
@@ -15,7 +15,10 @@ export const getTimeSlots = createAsyncThunk('getTimeSlots', async () => {
   return parseIds(parsedResponse) as Timeslot[];
 });
 
-const timeslotsAdapter = createEntityAdapter<any>({});
+const timeslotsAdapter = createEntityAdapter<Timeslot>({
+  sortComparer: (a, b) =>
+    new Date(a.startDate).getTime() - new Date(b.startDate).getTime(),
+});
 
 export const timeslotsSelectors = timeslotsAdapter.getSelectors();
 

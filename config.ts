@@ -1,4 +1,4 @@
-import getConfig from "next/config";
+import getConfig from 'next/config';
 
 const { publicRuntimeConfig = {} } = getConfig() || {};
 
@@ -9,7 +9,7 @@ export default {
       .filter(Boolean)
       .reduce(
         (res, key) => (res !== null && res !== undefined ? res[key] : res),
-        publicRuntimeConfig
+        publicRuntimeConfig,
       );
     return result === undefined || result === publicRuntimeConfig
       ? defaultValue

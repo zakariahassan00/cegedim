@@ -17,6 +17,7 @@
     "paths": {
       "api/*": ["pages/api/*"],
       "components/*": ["components/*"],
+      "config": ["../config"],
       "pages/*": ["pages/*"],
       "prisma/*": ["../prisma/*"],
       "store": ["store/index"],
