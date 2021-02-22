@@ -4,8 +4,6 @@ import timeslotsSlice from './timeslots';
 
 const rootReducer = combineReducers({ timeslots: timeslotsSlice.reducer });
 
-const store = configureStore({
+export default configureStore({
   reducer: rootReducer,
 });
-
-export default store;

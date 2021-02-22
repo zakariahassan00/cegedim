@@ -18,7 +18,8 @@
       "api/*": ["pages/api/*"],
       "components/*": ["components/*"],
       "pages/*": ["pages/*"],
-      "prisma/*": ["../prisma"],
+      "prisma/*": ["../prisma/*"],
+      "store": ["store/index"],
       "store/*": ["store/*"],
       "styles/*": ["styles/*"],
       "utils/*": ["utils/*"]
