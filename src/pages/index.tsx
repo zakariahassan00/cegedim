@@ -50,7 +50,10 @@ const Home = () => {
           <li>Appointments creation form</li>
           <li>List of appointments</li>
         </ul>
-        <p>You will find all specifications on the appointment page</p>
+        <p>
+          You will find all specifications on the appointment page and you can
+          see timeslot page and the existing code before coding.
+        </p>
       </Section>
       <Section name="bonus" title="Bonus">
         <p>
