@@ -1,5 +1,6 @@
 import { Link, makeStyles } from '@material-ui/core';
-import LocalLink from 'components/LocalLink';
+import EditorLink from 'components/EditorLink';
+import Section from 'components/Section';
 import NextLink from 'next/link';
 
 const useStyles = makeStyles({
@@ -12,7 +13,6 @@ const useStyles = makeStyles({
       flex: 1,
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'center',
       alignItems: 'center',
     },
   },
@@ -23,34 +23,32 @@ const Home = () => {
   return (
     <div className={classes.home}>
       <h1>Maiia's technical test</h1>
-      <section datacy="intro">
-        <h2>Introduction</h2>
+      <Section name="intro" title="Introduction">
         <p>
           To get the most out of this introduction, open the project using{' '}
           <Link href="https://code.visualstudio.com/" target="_blank">
             Visual Studio Code
-          </Link>
-          . You'll be able to open local files directly from your web browser.
-          If you favor another editor which provides a similar API to open
-          files, feel free to modify{' '}
-          <LocalLink href="src/components/LocalLink.tsx:12:18">
-            "src/components/LocalLink.tsx"
-          </LocalLink>
+          </Link>{' '}
+          by clicking <EditorLink path="">this link</EditorLink>. You'll be able
+          to open local files directly from your web browser. If you favor
+          another editor which provides a similar API to open files, feel free
+          to modify{' '}
+          <EditorLink path="src/components/EditorLink.tsx:12:18">
+            "src/components/EditorLink.tsx"
+          </EditorLink>
           .
         </p>
-      </section>
-      <section datacy="timeslots">
-        <h3>Time slots</h3>
+      </Section>
+      <Section name="timeslots" title="Time slots">
         <NextLink href="/timeslots">
           <Link>Let's take a look at the time slots page</Link>
         </NextLink>
-      </section>
-      <section datacy="appointments">
-        <h3>Appointments</h3>
+      </Section>
+      <Section name="appointments" title="Appointments">
         <NextLink href="/appointments">
           <Link>Let's work on appointments</Link>
         </NextLink>
-      </section>
+      </Section>
     </div>
   );
 };

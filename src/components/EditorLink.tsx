@@ -4,15 +4,15 @@ import { ReactNode } from 'react';
 
 const CURRENT_WORKING_DIRECTORY = config.get('CURRENT_WORKING_DIRECTORY');
 
-type Props = { href: string; children: ReactNode };
+type Props = { path: string; children: ReactNode };
 
-const LocalLink = (props: Props) => {
-  const { href, children } = props;
+const EditorLink = (props: Props) => {
+  const { path, children } = props;
   return (
-    <Link href={`vscode://file/${CURRENT_WORKING_DIRECTORY}/${href}`}>
+    <Link href={`vscode://file/${CURRENT_WORKING_DIRECTORY}/${path}`}>
       {children}
     </Link>
   );
 };
 
-export default LocalLink;
+export default EditorLink;

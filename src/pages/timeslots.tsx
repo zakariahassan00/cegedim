@@ -1,5 +1,5 @@
 import { Link } from '@material-ui/core';
-import LocalLink from 'components/LocalLink';
+import EditorLink from 'components/EditorLink';
 import TimeSlots from 'components/TimeSlots';
 import NextLink from 'next/link';
 import { useEffect } from 'react';
@@ -33,9 +33,9 @@ const TimeSlotPage = () => {
             </p>
             <p>
               The store itself is exported from{' '}
-              <LocalLink href="src/store/index.ts">
+              <EditorLink path="src/store/index.ts">
                 "src/store/index.ts"
-              </LocalLink>
+              </EditorLink>
               .
             </p>
             <p>
@@ -44,9 +44,9 @@ const TimeSlotPage = () => {
                 @reduxjs/toolkit
               </Link>{' '}
               to spare some boilerplate code in the example timeslot slice (see{' '}
-              <LocalLink href="src/store/timeslots.ts">
+              <EditorLink path="src/store/timeslots.ts">
                 "src/store/timeslots.ts"
-              </LocalLink>{' '}
+              </EditorLink>{' '}
               for implementation). The library generates extensible reducers,
               actions, and selectors. Asynchronous side effects are handled by
               the{' '}
@@ -60,9 +60,9 @@ const TimeSlotPage = () => {
             </p>
             <p>
               In order to add a new reducer to your root reducer, add it to{' '}
-              <LocalLink href="src/store/reducers.ts:4:32">
+              <EditorLink path="src/store/reducers.ts:4:32">
                 "src/store/reducers.ts"
-              </LocalLink>
+              </EditorLink>
               .
             </p>
           </section>
