@@ -43,7 +43,7 @@ const SectionGoals = (props: Props) => {
                 id={htmlFor}
                 name={htmlFor}
                 checked={!!localForm?.[htmlFor]}
-                onChange={(e) => {
+                onChange={() => {
                   setLocalForm((prevState) => ({
                     ...prevState,
                     [htmlFor]: !currentValue,
