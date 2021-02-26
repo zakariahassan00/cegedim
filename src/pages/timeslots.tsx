@@ -1,7 +1,6 @@
 import { Link } from '@material-ui/core';
 import EditorLink from 'components/EditorLink';
 import TimeSlots from 'components/TimeSlots';
-import NextLink from 'next/link';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTimeSlots, timeslotsSelectors } from 'store/timeslots';

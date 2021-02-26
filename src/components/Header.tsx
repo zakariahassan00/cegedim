@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { AppBar, makeStyles, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, makeStyles, Toolbar } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import { useRouter } from 'next/router';
 
