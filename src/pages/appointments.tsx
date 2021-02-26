@@ -1,7 +1,7 @@
 import AppointmentForm from 'components/AppointmentForm';
 import AppointmentList from 'components/AppointmentList';
 import Section from 'components/Section';
-import SectionGoals from 'components/SectionGoals';
+import AllGoals from 'components/AllGoals';
 
 const AppointmentsPage = () => {
   return (
@@ -29,25 +29,7 @@ const AppointmentsPage = () => {
           propose a simple workflow for users. It also should be responsive.
         </p>
       </Section>
-      <SectionGoals
-        title="Goals for Appointment Form"
-        goals={[
-          'Show the list of practitioners and select one of them',
-          'Show the list of patients and select one of them',
-          'Show the availabities of the selected practitioner',
-          "Choose the date and the time depending of the selected practitioner's availabities",
-          'Validate and submit the form',
-        ]}
-        name="goals-form"
-      />
-      <SectionGoals
-        title="Goals for Appointment List"
-        goals={[
-          'Show the list of all appointments with all mandatory informations',
-          'Update dynamically the list',
-        ]}
-        name="goals-list"
-      />
+      <AllGoals />
       <AppointmentForm />
       <AppointmentList />
     </>

@@ -12,10 +12,12 @@ type Props = {
   goals: string[];
   name: string;
   title: string;
+  onChange?: () => void;
+  onChangeIsAchievedAllGoals?: (value: boolean) => void;
 };
 
 const SectionGoals = (props: Props) => {
-  const { goals, name, title } = props;
+  const { goals, name, title, onChange, onChangeIsAchievedAllGoals } = props;
   const [localForm, setLocalForm] = useState({});
 
   useEffect(() => {
@@ -29,6 +31,7 @@ const SectionGoals = (props: Props) => {
 
   useEffect(() => {
     localStorage.setItem(name, JSON.stringify(localForm));
+    onChange?.();
   }, [localForm]);
 
   const numberOfAchievedGoals = useMemo(() => {
@@ -40,6 +43,10 @@ const SectionGoals = (props: Props) => {
     () => numberOfAchievedGoals === goals.length,
     [numberOfAchievedGoals, goals],
   );
+
+  useEffect(() => {
+    onChangeIsAchievedAllGoals?.(isAchievedAllGoals);
+  }, [isAchievedAllGoals]);
 
   return (
     <Accordion datacy={name}>
@@ -63,7 +70,7 @@ const SectionGoals = (props: Props) => {
                   id={htmlFor}
                   name={htmlFor}
                   checked={currentValue}
-                  onChange={(e) => {
+                  onChange={() => {
                     setLocalForm((prevState) => ({
                       ...prevState,
                       [htmlFor]: !currentValue,
