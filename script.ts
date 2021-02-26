@@ -1,5 +1,7 @@
-import faker from 'faker';
-import prisma from 'prisma/client';
+/* eslint-disable @typescript-eslint/no-var-requires */
+const faker = require('faker');
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
 function randomIntFromInterval(min, max) {
   // min and max included

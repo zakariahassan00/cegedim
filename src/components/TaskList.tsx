@@ -9,15 +9,23 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import DoneAllIcon from '@material-ui/icons/DoneAll';
 
 type Props = {
-  goals: string[];
+  tasks: string[];
   name: string;
   title: string;
+  expected?: number;
   onChange?: () => void;
-  onChangeIsAchievedAllGoals?: (value: boolean) => void;
+  onComplete?: (value: boolean) => void;
 };
 
-const SectionGoals = (props: Props) => {
-  const { goals, name, title, onChange, onChangeIsAchievedAllGoals } = props;
+const TaskList = (props: Props) => {
+  const {
+    tasks,
+    name,
+    title,
+    onChange,
+    onComplete,
+    expected = props.tasks.length,
+  } = props;
   const [localForm, setLocalForm] = useState({});
 
   useEffect(() => {
@@ -34,19 +42,19 @@ const SectionGoals = (props: Props) => {
     onChange?.();
   }, [localForm]);
 
-  const numberOfAchievedGoals = useMemo(() => {
+  const numberOfAchievedTasks = useMemo(() => {
     return Object.keys(localForm).filter((goal) => localForm[goal] === true)
       .length;
   }, [localForm]);
 
-  const isAchievedAllGoals = useMemo(
-    () => numberOfAchievedGoals === goals.length,
-    [numberOfAchievedGoals, goals],
-  );
+  const isAchievedAllTasks = useMemo(() => numberOfAchievedTasks >= expected, [
+    numberOfAchievedTasks,
+    expected,
+  ]);
 
   useEffect(() => {
-    onChangeIsAchievedAllGoals?.(isAchievedAllGoals);
-  }, [isAchievedAllGoals]);
+    onComplete?.(isAchievedAllTasks);
+  }, [isAchievedAllTasks]);
 
   return (
     <Accordion datacy={name}>
@@ -54,14 +62,14 @@ const SectionGoals = (props: Props) => {
         <h3>
           {title}{' '}
           <span>
-            {numberOfAchievedGoals}/{goals.length}
+            {numberOfAchievedTasks}/{expected}
           </span>{' '}
-          {isAchievedAllGoals && <DoneAllIcon />}
+          {isAchievedAllTasks && <DoneAllIcon />}
         </h3>
       </AccordionSummary>
       <AccordionDetails>
         <ul>
-          {goals.map((instruction, i) => {
+          {tasks.map((instruction, i) => {
             const htmlFor = `${name}-${i}`;
             const currentValue = !!localForm?.[htmlFor];
             return (
@@ -88,4 +96,4 @@ const SectionGoals = (props: Props) => {
   );
 };
 
-export default SectionGoals;
+export default TaskList;
