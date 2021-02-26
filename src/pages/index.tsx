@@ -23,22 +23,6 @@ const Home = () => {
   return (
     <div className={classes.home}>
       <h1>Maiia's technical test</h1>
-      <Section name="intro" title="Introduction">
-        <p>
-          To get the most out of this introduction, open the project using{' '}
-          <Link href="https://code.visualstudio.com/" target="_blank">
-            Visual Studio Code
-          </Link>{' '}
-          by clicking <EditorLink path="">this link</EditorLink>. You'll be able
-          to open local files directly from your web browser. If you favor
-          another editor which provides a similar API to open files, feel free
-          to modify{' '}
-          <EditorLink path="src/components/EditorLink.tsx:12:18">
-            "src/components/EditorLink.tsx"
-          </EditorLink>
-          .
-        </p>
-      </Section>
       <Section name="instructions" title="Instructions">
         <p>
           You have just joind the Maiia Pro team as a front-end, your first

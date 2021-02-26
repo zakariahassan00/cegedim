@@ -1,12 +1,17 @@
 import SectionGoals from './SectionGoals';
 import { useState } from 'react';
 
-const AllGoals = () => {
+type Props = {
+  className?: string;
+};
+
+const AllGoals = (props: Props) => {
+  const { className } = props;
   const [isAllAchievedGoalsForm, setIsAllAchievedGoalsForm] = useState(false);
   const [isAllAchievedGoalsList, setIsAllAchievedGoalsList] = useState(false);
 
   return (
-    <>
+    <div className={className}>
       <SectionGoals
         title="Goals for Appointment Form"
         goals={[
@@ -23,6 +28,7 @@ const AllGoals = () => {
         title="Goals for Appointment List"
         goals={[
           'Show the list of all appointments with all mandatory informations',
+          'Show practitioner name for each appointment',
           'Update dynamically the list',
         ]}
         name="goals-list"
@@ -35,7 +41,7 @@ const AllGoals = () => {
           make sure that everything works well and that your code is clean.
         </p>
       )}
-    </>
+    </div>
   );
 };
 
