@@ -1,5 +1,5 @@
 import faker from 'faker';
-import prisma from 'prisma/client';
+import prisma from './prisma/client';
 
 function randomIntFromInterval(min, max) {
   // min and max included
