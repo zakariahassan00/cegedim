@@ -1,13 +1,21 @@
 import { useEffect, useState, useMemo } from 'react';
-import { Checkbox } from '@material-ui/core';
+import {
+  Checkbox,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+} from '@material-ui/core';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import DoneAllIcon from '@material-ui/icons/DoneAll';
 
 type Props = {
   goals: string[];
   name: string;
+  title: string;
 };
 
 const SectionGoals = (props: Props) => {
-  const { goals, name } = props;
+  const { goals, name, title } = props;
   const [localForm, setLocalForm] = useState({});
 
   useEffect(() => {
@@ -28,35 +36,48 @@ const SectionGoals = (props: Props) => {
       .length;
   }, [localForm]);
 
+  const isAchievedAllGoals = useMemo(
+    () => numberOfAchievedGoals === goals.length,
+    [numberOfAchievedGoals, goals],
+  );
+
   return (
-    <>
-      <p>
-        {numberOfAchievedGoals}/{goals.length}
-      </p>
-      <ul>
-        {goals.map((instruction, i) => {
-          const htmlFor = `${name}-${i}`;
-          const currentValue = !!localForm?.[htmlFor];
-          return (
-            <li key={i}>
-              <Checkbox
-                id={htmlFor}
-                name={htmlFor}
-                checked={!!localForm?.[htmlFor]}
-                onChange={(e) => {
-                  setLocalForm((prevState) => ({
-                    ...prevState,
-                    [htmlFor]: !currentValue,
-                  }));
-                }}
-                color="primary"
-              />
-              <label htmlFor={htmlFor}>{instruction}</label>
-            </li>
-          );
-        })}
-      </ul>
-    </>
+    <Accordion datacy={name}>
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <h3>
+          {title}{' '}
+          <span>
+            {numberOfAchievedGoals}/{goals.length}
+          </span>{' '}
+          {isAchievedAllGoals && <DoneAllIcon />}
+        </h3>
+      </AccordionSummary>
+      <AccordionDetails>
+        <ul>
+          {goals.map((instruction, i) => {
+            const htmlFor = `${name}-${i}`;
+            const currentValue = !!localForm?.[htmlFor];
+            return (
+              <li key={i}>
+                <Checkbox
+                  id={htmlFor}
+                  name={htmlFor}
+                  checked={!!localForm?.[htmlFor]}
+                  onChange={(e) => {
+                    setLocalForm((prevState) => ({
+                      ...prevState,
+                      [htmlFor]: !currentValue,
+                    }));
+                  }}
+                  color="primary"
+                />
+                <label htmlFor={htmlFor}>{instruction}</label>
+              </li>
+            );
+          })}
+        </ul>
+      </AccordionDetails>
+    </Accordion>
   );
 };
 
