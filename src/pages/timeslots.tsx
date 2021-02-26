@@ -39,8 +39,23 @@ const TimeSlotPage = () => {
               framework that allows to create both server side and statically
               generated websites.
             </p>
-            <p>Pages are defined in the "src/pages" folder. </p>
-            <p>Components</p>
+            <p>
+              Pages are defined in the "src/pages" folder. For instance you can
+              take a look at "/timeslots" page:{' '}
+              <EditorLink path="src/pages/timeslots.tsx">
+                "src/pages/timeslots.tsx"
+              </EditorLink>
+              .
+            </p>
+            <p>
+              All the components (except for pages components) are defined in
+              the "src/components" folder. For instance you can take a look at
+              "TimeSlots.tsx" component:{' '}
+              <EditorLink path="src/components/TimeSlots.tsx">
+                "src/components/TimeSlots.tsx"
+              </EditorLink>
+              .
+            </p>
           </section>
           <section>
             <h4>Backend</h4>
