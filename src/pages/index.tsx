@@ -1,5 +1,4 @@
 import { Link, makeStyles } from '@material-ui/core';
-import EditorLink from 'components/EditorLink';
 import Section from 'components/Section';
 import NextLink from 'next/link';
 
@@ -23,20 +22,26 @@ const Home = () => {
   return (
     <div className={classes.home}>
       <h1>Maiia's technical test</h1>
-      <Section name="intro" title="Introduction">
+      <Section name="instructions" title="Instructions">
         <p>
-          To get the most out of this introduction, open the project using{' '}
-          <Link href="https://code.visualstudio.com/" target="_blank">
-            Visual Studio Code
-          </Link>{' '}
-          by clicking <EditorLink path="">this link</EditorLink>. You'll be able
-          to open local files directly from your web browser. If you favor
-          another editor which provides a similar API to open files, feel free
-          to modify{' '}
-          <EditorLink path="src/components/EditorLink.tsx:12:18">
-            "src/components/EditorLink.tsx"
-          </EditorLink>
-          .
+          You have just joined the Maiia Pro team as a front-end developper,
+          your first mission is to implement two crucial features for the
+          success of the company.{' '}
+        </p>
+        <p>Here are the features to implement:</p>
+        <ul>
+          <li>Appointments creation form</li>
+          <li>List of appointments</li>
+        </ul>
+        <p>
+          First, visit the time slots page where you will find an exemple of
+          implementation, explanations about the libraries used in this project
+          and informations about the file structure.
+        </p>
+        <p>
+          Then, you can start working on the appointment page where you will
+          find all specifications and the tasks to achieve as well as the
+          components to implement.
         </p>
       </Section>
       <Section name="timeslots" title="Time slots">
