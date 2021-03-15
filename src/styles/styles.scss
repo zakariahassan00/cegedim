@@ -1,4 +1,3 @@
-
 /* ############################################################ */
 /* HTML Tag base */
 /* ############################################################ */
@@ -369,59 +368,58 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-// END RESET 
+// END RESET
 
-// ACTUAL STYLE 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Sora:wght@400;600;700&display=swap");
+// ACTUAL STYLE
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Sora:wght@400;600;700&display=swap');
 
-:root { 
-   --color-primary: #000;
-   --color-primary-alt: #ddd;
-   --color-secondary: #fff;
-   --font-family-primary: "Sora", sans-serif;
-   --font-family-secondary: "Inter", "Sora", sans-serif;
-   --font-size-h1: 2.5rem;
-   --font-size-h2: 1.5rem;
-   --font-size-h3: 1.25rem;
-   --font-size-h4: 1.125rem;
-   --font-size-text: 1rem;
-   --color-light-blue: hsl(244, 100%, 97%);
---color-blue: hsl(244, 100%, 96%);
---color-dark-blue: hsl(244, 82%, 87%);
---color-darkest-blue: hsl(244, 82%, 37%);
+:root {
+  --color-primary: #000;
+  --color-primary-alt: #ddd;
+  --color-secondary: #fff;
+  --font-family-primary: 'Sora', sans-serif;
+  --font-family-secondary: 'Inter', 'Sora', sans-serif;
+  --font-size-h1: 2.5rem;
+  --font-size-h2: 1.5rem;
+  --font-size-h3: 1.25rem;
+  --font-size-h4: 1.125rem;
+  --font-size-text: 1rem;
+  --color-light-blue: hsl(244, 100%, 97%);
+  --color-blue: hsl(244, 100%, 96%);
+  --color-dark-blue: hsl(244, 82%, 87%);
+  --color-darkest-blue: hsl(244, 82%, 37%);
 
---color-blue-border: hsl(244, 22%, 61%);
---color-blue-shadow: hsl(244, 100%, 94%);
-
+  --color-blue-border: hsl(244, 22%, 61%);
+  --color-blue-shadow: hsl(244, 100%, 94%);
 }
 body {
   min-height: 100vh;
   overflow-x: hidden;
-font-family: var(--font-family-primary);
-   font-size: var(--font-size-text);
-   color: var(--color-primary);
-   line-height: 1.5;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-text);
+  color: var(--color-primary);
+  line-height: 1.5;
 }
 
-a, a.MuiLink-underlineHover:hover {
-
+a,
+a.MuiLink-underlineHover:hover {
   text-decoration: none;
 }
 
-div:not(.cta)> p > a, div > a, section > p > a {
+div:not(.cta) > p > a,
+div > a,
+section > p > a {
   font-weight: 600;
   border-bottom: 2px solid;
-  &.MuiLink-underlineHover:hover{
-  border-bottom: 4px solid;
+  &.MuiLink-underlineHover:hover {
+    border-bottom: 4px solid;
 
-  text-decoration: none;
+    text-decoration: none;
   }
 }
 
- .cta {
-
-
- position: relative;
+.cta {
+  position: relative;
   display: inline-block;
   cursor: pointer;
   outline: none;
@@ -430,77 +428,87 @@ div:not(.cta)> p > a, div > a, section > p > a {
   text-decoration: none;
   font-size: inherit;
   font-family: inherit;
-    font-weight: 600;
-    color: var(--color-primary);
-    text-transform: uppercase;
-    padding: 1.25em 2em;
-    background: var(--color-light-blue);
-    border: 2px solid var(--color-blue-border);
-    transform-style: preserve-3d;
-    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
+  font-weight: 600;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  padding: 1.25em 2em;
+  background: var(--color-light-blue);
+  border: 2px solid var(--color-blue-border);
+  transform-style: preserve-3d;
+  transition: transform 150ms cubic-bezier(0, 0, 0.58, 1),
+    background 150ms cubic-bezier(0, 0, 0.58, 1);
+  &::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-dark-blue);
+    border-radius: inherit;
+    box-shadow: 0 0 0 2px var(--color-blue-border),
+      0 0.625em 0 0 var(--color-blue-shadow);
+    transform: translate3d(0, 0.75em, -1em);
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1),
+      box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+  }
+  &:hover {
+    background: var(--color-blue);
+    transform: translate(0, 0.25em);
     &::before {
-      position: absolute;
-      content: '';
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: var(--color-dark-blue);
-      border-radius: inherit;
-      box-shadow: 0 0 0 2px var(--color-blue-border), 0 0.625em 0 0 var(--color-blue-shadow);
-      transform: translate3d(0, 0.75em, -1em);
-      transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+      box-shadow: 0 0 0 2px var(--color-blue-border),
+        0 0.5em 0 0 var(--color-blue-shadow);
+      transform: translate3d(0, 0.5em, -1em);
     }
-    &:hover {
-      background: var(--color-blue);
-      transform: translate(0, 0.25em);
-      &::before {
-        box-shadow: 0 0 0 2px var(--color-blue-border), 0 0.5em 0 0 var(--color-blue-shadow);
-        transform: translate3d(0, 0.5em, -1em);
-      }
+  }
+  &:active {
+    background: var(--color-blue);
+    transform: translate(0em, 0.75em);
+    &::before {
+      box-shadow: 0 0 0 2px var(--color-blue-border),
+        0 0 var(--color-blue-shadow);
+      transform: translate3d(0, 0, -1em);
     }
-    &:active {
-      background: var(--color-blue);
-      transform: translate(0em, 0.75em);
-      &::before {
-        box-shadow: 0 0 0 2px var(--color-blue-border), 0 0 var(--color-blue-shadow);
-        transform: translate3d(0, 0, -1em);
-      }
-    }
- } 
+  }
+}
 
-.btn, .btn.MuiPaper-elevation1 {
+.btn,
+.btn.MuiPaper-elevation1 {
   display: flex;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   position: relative;
   padding: 1rem;
-  box-shadow: inset 0 0 0 4px #000, inset -4px -4px 0 6px #CCC;
-  background-color: #FFF;
+  box-shadow: inset 0 0 0 4px #000, inset -4px -4px 0 6px #ccc;
+  background-color: #fff;
   transition: box-shadow 0.2s ease;
 
   &:hover {
-  box-shadow: inset 0 0 0 4px #000, inset 0px 0px 0 6px #CCC;
+    box-shadow: inset 0 0 0 4px #000, inset 0px 0px 0 6px #ccc;
+  }
+
+  &.selected {
+    background: var(--color-light-blue);
+    box-shadow: inset 0 0 0 4px var(--color-darkest-blue),
+      inset -4px -4px 0 6px var(--color-blue-shadow);
+    border-color: var(--color-darkest-blue);
+    &:hover {
+      box-shadow: inset 0 0 0 4px var(--color-darkest-blue),
+        inset 0px 0px 0 6px var(--color-blue-shadow);
     }
+  }
 
-
-&.selected {
-        background: var(--color-light-blue);
-        box-shadow: inset 0 0 0 4px var(--color-darkest-blue), inset -4px -4px 0 6px var(--color-blue-shadow);
-        border-color:var(--color-darkest-blue); 
-          &:hover {
-        box-shadow: inset 0 0 0 4px var(--color-darkest-blue), inset 0px 0px 0 6px var(--color-blue-shadow);
-    }
-
+  a {
+    border-bottom: none;
+  }
 }
 
-  a { border-bottom: none; }
+.page {
+  padding: 10vmin;
 }
-
-.page { padding: 10vmin; }
 
 h1 {
   font-size: 90px;
@@ -511,54 +519,96 @@ section {
   position: relative;
   border: 4px solid var(--color-primary);
   padding: 6rem 2rem 3rem 2rem;
-  background: repeating-radial-gradient( var(--color-secondary), var(--color-secondary) 6px, var(--color-primary) 6px, var(--color-primary) 10px, transparent 0%, transparent 100% ), repeating-radial-gradient( var(--color-secondary), var(--color-secondary) 6px, var(--color-primary) 6px, var(--color-primary) 10px, transparent 0%, transparent 100% ), linear-gradient( var(--color-primary-alt), var(--color-primary-alt) 60px, var(--color-primary) 60px, var(--color-primary) 64px );
+  background: repeating-radial-gradient(
+      var(--color-secondary),
+      var(--color-secondary) 6px,
+      var(--color-primary) 6px,
+      var(--color-primary) 10px,
+      transparent 0%,
+      transparent 100%
+    ),
+    repeating-radial-gradient(
+      var(--color-secondary),
+      var(--color-secondary) 6px,
+      var(--color-primary) 6px,
+      var(--color-primary) 10px,
+      transparent 0%,
+      transparent 100%
+    ),
+    linear-gradient(
+      var(--color-primary-alt),
+      var(--color-primary-alt) 60px,
+      var(--color-primary) 60px,
+      var(--color-primary) 64px
+    );
   background-color: var(--color-secondary);
   background-position: right 5px, right 30px top 5px, 0 0;
   background-size: 50px 50px, 50px 50px, 100% 64px;
   background-repeat: no-repeat;
-  & + section { margin-top: 4rem; }
+  & + section {
+    margin-top: 4rem;
+  }
 }
 
-
-
 @keyframes scrolling-gradient {
-  0% {background-position: 0}
-  100% {background-position: 40px}
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: 40px;
+  }
 }
 
 .goals {
   border: 4px solid;
   padding: 0.5rem;
   font-size: 1rem;
-    margin: 20px;
-position: relative;
+  margin: 20px;
+  position: relative;
   margin-bottom: 120px;
-  background: linear-gradient( -45deg, var(--color-secondary), var(--color-secondary) 25%, var(--color-primary) 25%, var(--color-primary) 50%, var(--color-secondary) 50%, var(--color-secondary) 75%, var(--color-primary) 75%, var(--color-primary) 100% );
+  background: linear-gradient(
+    -45deg,
+    var(--color-secondary),
+    var(--color-secondary) 25%,
+    var(--color-primary) 25%,
+    var(--color-primary) 50%,
+    var(--color-secondary) 50%,
+    var(--color-secondary) 75%,
+    var(--color-primary) 75%,
+    var(--color-primary) 100%
+  );
   background-size: 40px 40px;
   -webkit-animation: scrolling-gradient 2s linear infinite;
   animation: scrolling-gradient 2s linear infinite;
 
-.success {
-  color: green;
-  position: absolute;
-  background: white;
-  bottom: -90px; 
-  border: 4px solid;
-  padding: 20px;
-
-}
+  .success {
+    color: green;
+    position: absolute;
+    background: white;
+    bottom: -90px;
+    border: 4px solid;
+    padding: 20px;
+  }
   .MuiAccordion-root.Mui-expanded {
-    padding:  0;
+    padding: 0;
   }
   & > div {
-      border: 4px solid;
-      h3 { 
-        display: flex; 
-        span { margin-right: 12px; }
-        svg { fill: green; }
+    border: 4px solid;
+    h3 {
+      display: flex;
+      span {
+        margin: 0 12px;
       }
-      &:first-child { border-bottom: none; }
-      &:last-of-type { border-top: none; }
+      svg {
+        fill: green;
+      }
+    }
+    &:first-child {
+      border-bottom: none;
+    }
+    &:last-of-type {
+      border-top: none;
+    }
   }
 }
 
@@ -568,24 +618,28 @@ position: relative;
   form {
     display: flex;
     flex-direction: column;
-     & > div:not(.cta){
-display: flex;
-align-items: center;
-min-height: 48px;
+    & > div:not(.cta) {
+      display: flex;
+      align-items: center;
+      min-height: 48px;
       > label {
-   display: grid;
-   grid-template-columns: 150px 300px;
- }
-  }
+        display: grid;
+        grid-template-columns: 150px 300px;
+      }
+    }
 
     ul {
       display: flex;
       justify-content: space-evenly;
     }
-}
+  }
 
-  .btn { margin-top: 12px; }
-  .cta { align-self: center; }
+  .btn {
+    margin-top: 12px;
+  }
+  .cta {
+    align-self: center;
+  }
 }
 
 .timeSlots {
@@ -599,4 +653,3 @@ min-height: 48px;
   flex-direction: column;
   margin-bottom: 20px;
 }
-
