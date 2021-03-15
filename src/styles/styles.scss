@@ -408,7 +408,7 @@ a, a.MuiLink-underlineHover:hover {
   text-decoration: none;
 }
 
-div:not(.cta)> p > a {
+div:not(.cta)> p > a, div > a, section > p > a {
   font-weight: 600;
   border-bottom: 2px solid;
   &.MuiLink-underlineHover:hover{
@@ -471,7 +471,7 @@ div:not(.cta)> p > a {
     }
  } 
 
-.btn {
+.btn, .btn.MuiPaper-elevation1 {
   display: flex;
   font-size: 1rem;
   font-weight: 600;
@@ -497,14 +497,10 @@ div:not(.cta)> p > a {
 
 }
 
-  a {
-    border-bottom: none;
-  }
+  a { border-bottom: none; }
 }
 
-.page {
-  padding: 10vmin;
-}
+.page { padding: 10vmin; }
 
 h1 {
   font-size: 90px;
@@ -526,10 +522,10 @@ section {
 
 
 @keyframes scrolling-gradient {
-
   0% {background-position: 0}
   100% {background-position: 40px}
 }
+
 .goals {
   border: 4px solid;
   padding: 0.5rem;
@@ -558,18 +554,13 @@ position: relative;
       border: 4px solid;
       h3 { 
         display: flex; 
-        span {
-          margin-right: 12px;
-        }
-        svg {
-          fill: green;
-        }
+        span { margin-right: 12px; }
+        svg { fill: green; }
       }
       &:first-child { border-bottom: none; }
       &:last-of-type { border-top: none; }
   }
 }
-
 
 .appointment__form {
   display: flex;
@@ -585,30 +576,27 @@ min-height: 48px;
    display: grid;
    grid-template-columns: 150px 300px;
  }
-
   }
+
     ul {
       display: flex;
       justify-content: space-evenly;
     }
 }
-  .btn {
-    margin-top: 12px;
-  }
-  .cta {
-    align-self: center;
-  }
 
-
+  .btn { margin-top: 12px; }
+  .cta { align-self: center; }
 }
 
 .timeSlots {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 16px
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .timeSlot__item {
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
 }
+
