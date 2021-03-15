@@ -1,6 +1,7 @@
 import { Link } from '@material-ui/core';
 import EditorLink from 'components/EditorLink';
 import TimeSlots from 'components/TimeSlots';
+import Section from 'components/Section';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTimeSlots, timeslotsSelectors } from 'store/timeslots';
@@ -16,10 +17,10 @@ const TimeSlotPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="page">
       <section datacy="intro">
         <header>
-          <h1>Welcome to the times lot page</h1>
+          <h1>Welcome to the timeslot page</h1>
           <h2>
             A basic example of how we make Next.js and Redux work together
           </h2>
@@ -160,9 +161,13 @@ const TimeSlotPage = () => {
           </section>
         </article>
       </section>
-      <section datacy="timeslots">
+      <Section
+        name="timeslots"
+        title="TimeSlot List"
+        className="timeSlot__list"
+      >
         <TimeSlots items={timeslots} />
-      </section>
+      </Section>
     </div>
   );
 };

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "dev:back": "SERVER_API_ENDPOINT=http://localhost:8080 next dev",
     "lint": "eslint --ext .tsx,.ts --fix src/",
     "postinstall": "husky install && prisma generate",
