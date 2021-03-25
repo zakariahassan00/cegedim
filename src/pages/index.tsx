@@ -1,26 +1,10 @@
-import { Link, makeStyles } from '@material-ui/core';
+import { Link } from '@material-ui/core';
 import Section from 'components/Section';
 import NextLink from 'next/link';
 
-const useStyles = makeStyles({
-  home: {
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100%',
-
-    '& > section': {
-      flex: 1,
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-    },
-  },
-});
-
 const Home = () => {
-  const classes = useStyles();
   return (
-    <div className={classes.home}>
+    <div className="home page">
       <h1>Maiia's technical test</h1>
       <Section name="instructions" title="Instructions">
         <p>
@@ -46,12 +30,20 @@ const Home = () => {
       </Section>
       <Section name="timeslots" title="Time slots">
         <NextLink href="/timeslots">
-          <Link>Let's take a look at the time slots page</Link>
+          <div className="cta">
+            <p>
+              <Link>Let's take a look at the time slots page</Link>
+            </p>
+          </div>
         </NextLink>
       </Section>
       <Section name="appointments" title="Appointments">
         <NextLink href="/appointments">
-          <Link>Let's work on appointments</Link>
+          <div className="cta">
+            <p>
+              <Link>Let's work on appointments</Link>
+            </p>
+          </div>
         </NextLink>
       </Section>
     </div>

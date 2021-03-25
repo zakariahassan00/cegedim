@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "baseUrl": "src",
     "skipLibCheck": true,
@@ -12,20 +16,45 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
     "jsx": "preserve",
     "paths": {
-      "api/*": ["pages/api/*"],
-      "components/*": ["components/*"],
-      "config": ["../config"],
-      "pages/*": ["pages/*"],
-      "prisma/*": ["../prisma/*"],
-      "store": ["store/index"],
-      "store/*": ["store/*"],
-      "styles/*": ["styles/*"],
-      "utils/*": ["utils/*"]
+      "api/*": [
+        "pages/api/*"
+      ],
+      "components/*": [
+        "components/*"
+      ],
+      "config": [
+        "../config"
+      ],
+      "pages/*": [
+        "pages/*"
+      ],
+      "prisma/*": [
+        "../prisma/*"
+      ],
+      "store": [
+        "store/index"
+      ],
+      "store/*": [
+        "store/*"
+      ],
+      "styles/*": [
+        "styles/*"
+      ],
+      "utils/*": [
+        "utils/*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "cypress"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "cypress"
+  ]
 }
