@@ -1,4 +1,4 @@
-## Getting Started
+## MAIIA - Frontend Technical Test
 
 First install the project dependencies:
 
