@@ -635,7 +635,7 @@ section {
   }
 
   .btn {
-    margin-top: 12px;
+    margin-top: 25px;
   }
   .cta {
     align-self: center;
@@ -652,4 +652,30 @@ section {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+}
+
+.availability {
+  display: flex;
+  flex-wrap: wrap;
+  
+  &__day {
+    width: 100%;
+    display: flex;
+    margin: 10px 0;
+    svg {
+      margin-right: 5px
+    }
+  };
+
+  &__timelist {
+    // width: 100%;
+    margin-left: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .availability__time {
+    margin: 5px;
+  }
 }

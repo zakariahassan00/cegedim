@@ -12,6 +12,7 @@ const SERVER_API_ENDPOINT = config.get('SERVER_API_ENDPOING', '/api');
 export const getTimeSlots = createAsyncThunk('getTimeSlots', async () => {
   const response = await fetch(`${SERVER_API_ENDPOINT}/timeslots`);
   const parsedResponse = await response.json();
+  console.log(parsedResponse);
   return parseIds(parsedResponse) as Timeslot[];
 });
 

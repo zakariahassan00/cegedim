@@ -26,4 +26,4 @@
 
 const pick = (datacy: string) => cy.get(`[datacy=${datacy}]`);
 
-Cypress.Commands.add("pick", pick);
+Cypress.Commands.add('pick', pick);
