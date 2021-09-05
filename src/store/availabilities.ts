@@ -11,7 +11,7 @@ const SERVER_API_ENDPOINT = config.get('SERVER_API_ENDPOING', '/api');
 
 export const getAvailabilities = createAsyncThunk(
   'getAvailabilities',
-  async (practitionerId) => {
+  async (practitionerId: number) => {
     const response = await fetch(`
       ${SERVER_API_ENDPOINT}/availabilities?practitionerId=${practitionerId}`);
     const parsedResponse = await response.json();

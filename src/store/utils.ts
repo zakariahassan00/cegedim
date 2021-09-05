@@ -5,3 +5,12 @@ export const parseIds = (data) => {
   });
   return data;
 };
+
+export const mapIdsToNames = (users) => {
+  const map = {};
+  users.forEach(
+    (user) => (map[user.id] = `${user.firstName} ${user.lastName}`),
+  );
+
+  return map;
+};

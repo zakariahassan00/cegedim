@@ -9,15 +9,21 @@ import {
   getAvailabilities,
   AvailabilitiesSelectors,
 } from 'store/availabilities';
-import { setNewAppontement } from 'store/appointments';
-import { useState } from 'react';
+import { setNewAppontement, editAppontement } from 'store/appointments';
+import { useState, useEffect } from 'react';
 
 const validationSchema = yup.object({
-  practitioner: yup.string().required('required'),
-  patient: yup.string().required('required'),
+  practitionerId: yup.string().required('required'),
+  patientId: yup.string().required('required'),
 });
 
-const AppointmentForm = ({ practitioners, patients }) => {
+const AppointmentForm = ({
+  practitioners,
+  patients,
+  editMode = false,
+  selectedAppointment,
+  editCallback,
+}) => {
   const dispatch = useDispatch();
   const availabilities = useSelector((state) =>
     AvailabilitiesSelectors.selectAll(state.availabilities),
@@ -29,18 +35,34 @@ const AppointmentForm = ({ practitioners, patients }) => {
     id: null,
   });
 
+  useEffect(() => {
+    editMode && dispatch(getAvailabilities(selectedAppointment.practitionerId));
+  }, []);
+
   const formik = useFormik({
-    initialValues: {
-      practitioner: '',
-      patient: '',
-    },
+    initialValues: editMode
+      ? selectedAppointment
+      : { practitionerId: '', patientId: '' },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      const reqDate = {
-        ...values,
-        ...selectedAvailability,
+      const edit = () => {
+        const reqData = {
+          ...values,
+          ...selectedAvailability,
+          id: selectedAppointment.id,
+        };
+        editCallback && editCallback();
+        dispatch(editAppontement(reqData));
       };
-      dispatch(setNewAppontement());
+      const create = () => {
+        const reqData = {
+          ...values,
+          ...selectedAvailability,
+        };
+        dispatch(setNewAppontement(reqData));
+      };
+
+      editMode ? edit() : create();
     },
   });
 
@@ -95,11 +117,11 @@ const AppointmentForm = ({ practitioners, patients }) => {
   return (
     <div>
       <form onSubmit={formik.handleSubmit} className="appointments__form">
-        <Grid container spacing={2} justify="center">
-          <Grid item xs={12}>
+        <Grid container justify="center">
+          <Grid item xs={12} sm={6}>
             {/* Practitioner */}
             <MuiSelect
-              name="practitioner"
+              name="practitionerId"
               label="Practitioner"
               formik={formik}
               onChange={onPractitionerChange}
@@ -112,10 +134,10 @@ const AppointmentForm = ({ practitioners, patients }) => {
             </MuiSelect>
           </Grid>
 
-          <Grid item xs={12}>
+          <Grid item xs={12} sm={6}>
             {/* Patients */}
             <MuiSelect
-              name="patient"
+              name="patientId"
               label="Patient"
               formik={formik}
               onChange={formik.handleChange}
@@ -129,7 +151,7 @@ const AppointmentForm = ({ practitioners, patients }) => {
           </Grid>
         </Grid>
 
-        {formik.values.patient && renderDates()}
+        {(formik.values.patientId || editMode) && renderDates()}
 
         <Button
           className="btn"
@@ -139,7 +161,7 @@ const AppointmentForm = ({ practitioners, patients }) => {
           fullWidth
           type="submit"
         >
-          Submit
+          Book Appointment
         </Button>
       </form>
     </div>

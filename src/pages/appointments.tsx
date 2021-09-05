@@ -67,14 +67,22 @@ const AppointmentsPage = () => {
           title="Appointment Form"
           className="appointment__form"
         >
-          <AppointmentForm practitioners={practitioners} patients={patients} />
+          <AppointmentForm
+            practitioners={practitioners}
+            patients={patients}
+            editCallback={false}
+          />
         </Section>
         <Section
           name="appointment-list"
           title="Appointment List"
           className="appointment__list"
         >
-          <AppointmentList appointments={appointments} />
+          <AppointmentList
+            appointments={appointments}
+            practitioners={practitioners}
+            patients={patients}
+          />
         </Section>
       </div>
     </div>
