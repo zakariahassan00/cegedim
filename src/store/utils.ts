@@ -14,3 +14,10 @@ export const mapIdsToNames = (users) => {
 
   return map;
 };
+
+export function calculateAge(birthDate) {
+  const diff = Date.now() - new Date(birthDate).getTime();
+  const age = new Date(diff);
+
+  return Math.abs(age.getUTCFullYear() - 1970);
+}

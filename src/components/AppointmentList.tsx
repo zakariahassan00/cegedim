@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Typography, Dialog, DialogContent } from '@material-ui/core';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import PersonIcon from '@material-ui/icons/Person';
@@ -7,13 +9,14 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import AppointmentForm from './AppointmentForm';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { deleteAppontement } from 'store/appointments';
 import { mapIdsToNames } from 'store/utils';
 import Search from './Search';
 
 const AppointmentList = ({ appointments, practitioners, patients }) => {
   const dispatch = useDispatch();
+  const appointmentsState = useSelector((state) => state.appointments);
   const [allAppointments, setAllAppointments] = useState({
     source: [],
     filtred: [],
@@ -90,7 +93,7 @@ const AppointmentList = ({ appointments, practitioners, patients }) => {
         <div className="row">
           <EventAvailableIcon />
           <Typography variant="subtitle1">{`Date : ${new Date(
-            appointment.startDate,
+            appointment.startDate.split('T')[0],
           ).toDateString()}`}</Typography>
         </div>
         <div className="row">
@@ -122,6 +125,10 @@ const AppointmentList = ({ appointments, practitioners, patients }) => {
           />
         </DialogContent>
       </Dialog>
+
+      <Backdrop className="backdrop" open={appointmentsState.loading}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </div>
   );
 };

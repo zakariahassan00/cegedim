@@ -5,6 +5,7 @@ const useStyles = makeStyles((theme) => ({
   // search
   search: {
     width: '100%',
+    margin: '20px auto',
   },
   margin: {
     margin: theme.spacing(1),

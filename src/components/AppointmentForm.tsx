@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+import { calculateAge } from 'store/utils';
 import { Button, Chip, MenuItem, Grid, Typography } from '@material-ui/core';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import ScheduleIcon from '@material-ui/icons/Schedule';
@@ -10,7 +12,6 @@ import {
   AvailabilitiesSelectors,
 } from 'store/availabilities';
 import { setNewAppontement, editAppontement } from 'store/appointments';
-import { useState, useEffect } from 'react';
 
 const validationSchema = yup.object({
   practitionerId: yup.string().required('required'),
@@ -72,23 +73,25 @@ const AppointmentForm = ({
     dispatch(getAvailabilities(e.target.value));
   };
 
-  const renderDates = () => {
-    const days = {};
+  const renderAvailabities = () => {
+    // map of a single day and its corresponding times
+    const dayTimesMap = {};
 
     availabilities.forEach((date) => {
-      const singleDay = new Date(date.startDate).toLocaleDateString();
-      if (days[singleDay]) days[singleDay] = [...days[singleDay], date];
-      else days[singleDay] = [date];
+      const singleDay = new Date(date.startDate.split('T')[0]).toDateString();
+      if (dayTimesMap[singleDay])
+        dayTimesMap[singleDay] = [...dayTimesMap[singleDay], date];
+      else dayTimesMap[singleDay] = [date];
     });
 
-    return Object.keys(days).map((day) => (
+    return Object.keys(dayTimesMap).map((day) => (
       <div key={day} className="availability">
         <div className="availability__day">
           <DateRangeIcon />
           <Typography variant="subtitle1">{day}</Typography>
         </div>
         <div className="availability__timelist">
-          {days[day].map((date) => {
+          {dayTimesMap[day].map((date) => {
             const isSelected = selectedAvailability.id === date.id;
 
             return (
@@ -117,9 +120,9 @@ const AppointmentForm = ({
   return (
     <div>
       <form onSubmit={formik.handleSubmit} className="appointments__form">
-        <Grid container justify="center">
+        <Grid container justify="center" spacing={2}>
           <Grid item xs={12} sm={6}>
-            {/* Practitioner */}
+            {/* Practitioners */}
             <MuiSelect
               name="practitionerId"
               label="Practitioner"
@@ -128,7 +131,7 @@ const AppointmentForm = ({
             >
               {practitioners.map((partitioner) => (
                 <MenuItem key={partitioner.id} value={partitioner.id}>
-                  {`${partitioner.firstName} ${partitioner.lastName}`}
+                  {`${partitioner.firstName} ${partitioner.lastName} (${partitioner.speciality})`}
                 </MenuItem>
               ))}
             </MuiSelect>
@@ -144,14 +147,16 @@ const AppointmentForm = ({
             >
               {patients.map((patient) => (
                 <MenuItem key={patient.id} value={patient.id}>
-                  {`${patient.firstName} ${patient.lastName}`}
+                  {`${patient.firstName} ${patient.lastName} (${calculateAge(
+                    patient.birthDate,
+                  )} years-old)`}
                 </MenuItem>
               ))}
             </MuiSelect>
           </Grid>
         </Grid>
 
-        {(formik.values.patientId || editMode) && renderDates()}
+        {(formik.values.patientId || editMode) && renderAvailabities()}
 
         <Button
           className="btn"
@@ -161,7 +166,7 @@ const AppointmentForm = ({
           fullWidth
           type="submit"
         >
-          Book Appointment
+          {editMode ? 'Update Appointment' : 'Book Appointment'}
         </Button>
       </form>
     </div>

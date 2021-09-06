@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
   formcontrol: {
     margin: '15px auto',
     width: '100%',
-    maxWidth: 600,
+    // maxWidth: 600,
   },
   select: {
     width: '100%',

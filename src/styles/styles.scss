@@ -673,7 +673,7 @@ section {
     margin-left: 20px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    // justify-content: center;
   }
 
   .availability__time {
@@ -691,7 +691,7 @@ section {
     padding: 30px 20px 20px;
 
     width: 300px;
-    height: 100px;
+    min-height: 120px;
     border: 1px solid gray;
     margin: 10px;
   };
@@ -714,4 +714,9 @@ section {
   .deleteIcon {
     color: #bb321f;
   };
+}
+
+.backdrop {
+  z-index: 10 !important;
+  color: #fff;
 }
