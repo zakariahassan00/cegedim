@@ -1,10 +1,5 @@
 import { useState, useEffect } from 'react';
-import {
-  Typography,
-  makeStyles,
-  Dialog,
-  DialogContent,
-} from '@material-ui/core';
+import { Typography, Dialog, DialogContent } from '@material-ui/core';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import PersonIcon from '@material-ui/icons/Person';
@@ -17,44 +12,7 @@ import { deleteAppontement } from 'store/appointments';
 import { mapIdsToNames } from 'store/utils';
 import Search from './Search';
 
-const useStyles = makeStyles(() => ({
-  appointments: {
-    display: 'flex',
-    alignItems: 'center',
-    flexWrap: 'wrap',
-  },
-  appointment: {
-    position: 'relative',
-    padding: '30px 20px 20px',
-
-    width: 300,
-    height: 100,
-    border: '1px solid gray',
-    margin: 10,
-  },
-  row: {
-    display: 'flex',
-    '& svg': {
-      marginRight: 10,
-    },
-  },
-  controls: {
-    color: 'gray',
-    position: 'absolute',
-    top: 5,
-    right: 5,
-    '& svg': {
-      marginRight: 10,
-      cursor: 'pointer',
-    },
-  },
-  deleteIcon: {
-    color: '#bb321f',
-  },
-}));
-
 const AppointmentList = ({ appointments, practitioners, patients }) => {
-  const classes = useStyles();
   const dispatch = useDispatch();
   const [allAppointments, setAllAppointments] = useState({
     source: [],
@@ -106,34 +64,36 @@ const AppointmentList = ({ appointments, practitioners, patients }) => {
 
   const renderAppoitments = () => {
     if (allAppointments.filtred.length === 0)
-      <Typography variant="subtitle1" align="center">
-        No Appointments Found!
-      </Typography>;
+      return (
+        <Typography variant="subtitle1" align="center">
+          No Appointments Found!
+        </Typography>
+      );
 
     return allAppointments.filtred.map((appointment) => (
-      <div className={classes.appointment} key={appointment.id}>
-        <div className={classes.controls}>
+      <div className="appointment" key={appointment.id}>
+        <div className="controls">
           <EditIcon onClick={() => handleEdit(appointment)} />
           <DeleteIcon
-            className={classes.deleteIcon}
+            className="deleteIcon"
             onClick={() => handleDelete(appointment)}
           />
         </div>
-        <div className={classes.row}>
+        <div className="row">
           <AssignmentIndIcon />
           <Typography variant="subtitle1">{`Practitioner : ${appointment.practitionerName}`}</Typography>
         </div>
-        <div className={classes.row}>
+        <div className="row">
           <PersonIcon />
           <Typography variant="subtitle1">{`Patient : ${appointment.patientName}`}</Typography>
         </div>
-        <div className={classes.row}>
+        <div className="row">
           <EventAvailableIcon />
           <Typography variant="subtitle1">{`Date : ${new Date(
             appointment.startDate,
           ).toDateString()}`}</Typography>
         </div>
-        <div className={classes.row}>
+        <div className="row">
           <AccessTimeIcon />
           <Typography variant="subtitle1">{`Time : ${new Date(
             appointment.startDate,
@@ -146,7 +106,7 @@ const AppointmentList = ({ appointments, practitioners, patients }) => {
   };
 
   return (
-    <div className={classes.appointments}>
+    <div className="appointmentsList">
       <Search onSearch={handleSearch} />
 
       {renderAppoitments()}

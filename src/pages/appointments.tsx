@@ -71,6 +71,8 @@ const AppointmentsPage = () => {
             practitioners={practitioners}
             patients={patients}
             editCallback={false}
+            editMode={false}
+            selectedAppointment={false}
           />
         </Section>
         <Section
